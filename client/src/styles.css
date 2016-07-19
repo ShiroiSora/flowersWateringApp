@@ -1,0 +1,70 @@
+.container {
+    border: 4px double black;
+    /* Параметры границы */
+    padding: 10px;
+    /* Поля вокруг текста */
+}
+
+.Table {
+    display: table;
+}
+
+.Title {
+    display: table-caption;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: center;
+}
+
+.Row {
+    display: table-row;
+}
+
+.Cell {
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+button {
+    border-radius: 5px;
+    padding: 15px 25px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    background-color: LightGrey;
+}
+
+button:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.add-flower-form {
+    display: none;
+}
+
+.delete-flower-form {
+    display: none;
+}
+
+.operation{
+    border: 2px solid black;
+    display: table-cell;
+}
+
+.outdated{
+    color: red;
+}
