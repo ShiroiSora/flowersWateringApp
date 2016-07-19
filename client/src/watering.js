@@ -15,7 +15,7 @@ module.exports = function() {
     /*
      * Retrieve flowers array from local storage 
      */
-    let getFlowersFromLocalStrorage = function() {
+    let getFlowersFromLocalStrorage = () => {
         let arr = JSON.parse(localStorage.getItem(FLOWERS_ARRAY)) || [];
         let parsedFlowers = [];
         for (let i = 0; i < arr.length; i++) {
@@ -28,7 +28,7 @@ module.exports = function() {
     /*
      * Add new flower
      */
-    let addFlower = function(name, place, intervalToWater, minDivergence, maxDivergence) {
+    let addFlower = (name, place, intervalToWater, minDivergence, maxDivergence)=> {
         if (!utils.isFlowerNotExists(flowersArray, name)) {
 
             let flower = new Flower(name, place, intervalToWater, minDivergence, maxDivergence);
