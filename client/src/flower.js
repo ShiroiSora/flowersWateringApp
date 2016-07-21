@@ -1,4 +1,4 @@
- module.exports = class Flower {
+export default class Flower {
 
      constructor(name, place, intervalToWater, minDivergence, maxDivergence) {
          this.name = name;

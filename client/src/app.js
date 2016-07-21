@@ -1,12 +1,3 @@
-var App = (function() {
+import init from './watering.js';
 
-	return {
-		init: function() {
-			let wateringModule = require("./watering.js");
-			wateringModule().init();
-		}
-	}
-})();
-
-//init the global module after DOM is loaded
-document.onload = App.init();
+ init();

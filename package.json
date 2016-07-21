@@ -14,16 +14,18 @@
     "babel-cli": "^6.10.1",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "budo": "^8.3.0",
+    "react": "^15.2.1",
     "watchify": "^3.7.0"
   },
   "scripts": {
     "build": "babel client/src -d client/lib",
     "preserver": "npm run browserify",
-    "server": "budo client/src/app.js:client/lib/boundle.js -p 8080 --live --open --watch-glob **/*.{html,css,js} -- -d -t [ babelify --comments false ]",
-    "browserify": "browserify -o client/lib/boundle.js -d -e client/src/app.js -t [ babelify --comments false ]",
+    "start": "budo client/src/app.js:client/lib/boundle.js -p 8080 --live --live-port 8081 --open --watch-glob **/*.{html,css,js} -- -d -t [ babelify --presets [ es2015 react ] ]",
+    "browserify": "browserify client/src/app.js -o   client/lib/boundle.js  -t [ babelify --presets [ es2015 react ] ]",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
