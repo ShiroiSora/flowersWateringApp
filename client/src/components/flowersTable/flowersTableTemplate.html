@@ -1,0 +1,66 @@
+{{flowersArray}}
+<div class="Table">
+    <div class="Title">
+        <p>Flowers list </p>
+    </div>
+    <div class="Heading">
+        <div class="Cell">
+            <p>Name</p>
+        </div>
+        <div class="Cell">
+            <p>Place</p>
+        </div>
+        <div class="Cell">
+            <p>Watering interval</p>
+        </div>
+        <div class="Cell">
+            <p>Last watering date</p>
+        </div>
+        <div class="Cell">
+            <p>Allowed deviation not more than (min)</p>
+        </div>
+        <div class="Cell">
+            <p>Allowed deviation not less than(min)</p>
+        </div>
+
+        <div class="Cell">
+            <p>Planned next watering date</p>
+        </div>
+        <div class="Cell">
+            <p>Press button to water a flower</p>
+        </div>
+        <div class="Cell">
+            <p>Delete flower</p>
+        </div>
+
+        <div class="rows">
+            <div ng-repeat="item in flowersArray track by $index">
+                <div class="Row">
+                    <div ng-repeat="(key, value) in item">
+                        <div class="Cell">
+                            {{value}}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="water-button" ng-click="waterButtonHandler(item.name)">
+                      
+                    <div ng-switch on="item.status">
+                        <div ng-switch-when="notWatered">Water this flower</div>
+                        <div ng-switch-when="overWatered">This flower is over watered</div>
+                        <div ng-switch-when="driedUp">This flower is dried up! </div>
+                        <div ng-switch-default>No need to water</div>
+                    </div>
+                        </button>
+                    </div>
+
+                    <div>
+                        <button class="delete-button" ng-click="removeButtonHandler(item.name)">
+                       Remove flower
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

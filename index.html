@@ -7,64 +7,13 @@
 
 </head>
 
-<body>
-  <div class="container">
-
-    <div class="operation">
-      <p>Add new flower: </p>
-      <button class="add-flower">Add</button>
-
-      <!--Add flower form-->
-      <div class="add-flower-form">
-        <p> Name: <input type=text name="name" placeholder="Enter flower name" required autocomplete="on"> </p>
-        <p> Place, were plant is situated: <input type=text name="place" placeholder="Enter flower's place" required autocomplete="on"> </p>
-        <p> Watering interval: <input type=number name="interval" placeholder="Enter watering interval" required autocomplete="on"> </p>
-        <p> Watering divergence (not less than) <input type=number name="minDivergence" placeholder="Enter watering divergence" required autocomplete="on"> </p>
-        <p> Watering divergence (not more than) <input type=number name="maxDivergence" placeholder="Enter watering divergence" required autocomplete="on"> </p>
-
-        <button class="submit-add-flower">Submit</button>
-      </div>
-    </div>
+<body ng-app="flowersApp">
+  <div class="container" ng-controller="MainAppController">
+    
+    <add-flower-component> </add-flower-component>
 
     <!--Table with flowers-->
-    <div class="Table">
-      <div class="Title">
-        <p>Flowers list </p>
-      </div>
-      <div class="Heading">
-        <div class="Cell">
-          <p>Name</p>
-        </div>
-        <div class="Cell">
-          <p>Place</p>
-        </div>
-        <div class="Cell">
-          <p>Watering interval</p>
-        </div>
-        <div class="Cell">
-          <p>Last watering date</p>
-        </div>
-        <div class="Cell">
-          <p>Allowed deviation not more than (min)</p>
-        </div>
-        <div class="Cell">
-          <p>Allowed deviation not less than(min)</p>
-        </div>
-
-        <div class="Cell">
-          <p>Planned next watering date</p>
-        </div>
-        <div class="Cell">
-          <p>Press button to water a flower</p>
-        </div>
-        <div class="Cell">
-          <p>Delete flower</p>
-        </div>
-
-        <div class="rows"></div>
-      </div>
-
-    </div>
+    <flowers-table-component></flowers-table-component>
 
     <script src="client/lib/boundle.js" charset="utf-8"></script>
 </body>
