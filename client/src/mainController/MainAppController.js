@@ -1,14 +1,25 @@
-import Flower from '../models/flower.js';
-import * as util from '../services/util/util.js';
+import {
+    Flower
+}
+from '../models/Flower.js';
 
-export function MainAppController($scope,$interval) {
+export function MainAppController($scope, $interval, utilService) {
 
     const SECONDS_TO_UPDATE = 30000;
     const FLOWERS_ARRAY = 'flowersArray';
 
     $scope.flowersArray = getFlowersFromLocalStrorage();
+    $scope.$broadcast('flowersArrayChanged', $scope.flowersArray);
 
-    $interval(util.checkFlowerStatuses($scope.flowersArray), SECONDS_TO_UPDATE);
+
+    $scope.$on('flowersArrayChanged', function(event, data) {
+        $scope.flowersArray = data;
+    });
+
+    $interval(function() {
+        utilService.checkFlowerStatuses($scope.flowersArray);
+        $scope.$broadcast('flowersArrayChanged', $scope.flowersArray);
+    }, SECONDS_TO_UPDATE);
 
     /*
      * Retrieve flowers array from local storage 

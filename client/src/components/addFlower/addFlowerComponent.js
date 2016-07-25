@@ -1,4 +1,4 @@
-import * as addFlowerController from "./addFlowerController.js";
+import { addFlowerController} from "./addFlowerController.js";
 
 export let addFlowerComponent = {
     templateUrl: "./client/src/components/addFlower/addFlowerTemplate.html",

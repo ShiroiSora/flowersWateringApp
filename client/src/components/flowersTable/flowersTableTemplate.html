@@ -1,66 +1,69 @@
-{{flowersArray}}
-<div class="Table">
-    <div class="Title">
-        <p>Flowers list </p>
-    </div>
-    <div class="Heading">
-        <div class="Cell">
-            <p>Name</p>
-        </div>
-        <div class="Cell">
-            <p>Place</p>
-        </div>
-        <div class="Cell">
-            <p>Watering interval</p>
-        </div>
-        <div class="Cell">
-            <p>Last watering date</p>
-        </div>
-        <div class="Cell">
-            <p>Allowed deviation not more than (min)</p>
-        </div>
-        <div class="Cell">
-            <p>Allowed deviation not less than(min)</p>
-        </div>
-
-        <div class="Cell">
-            <p>Planned next watering date</p>
-        </div>
-        <div class="Cell">
-            <p>Press button to water a flower</p>
-        </div>
-        <div class="Cell">
-            <p>Delete flower</p>
-        </div>
-
-        <div class="rows">
-            <div ng-repeat="item in flowersArray track by $index">
-                <div class="Row">
-                    <div ng-repeat="(key, value) in item">
-                        <div class="Cell">
-                            {{value}}
-                        </div>
-                    </div>
-                    <div>
-                        <button class="water-button" ng-click="waterButtonHandler(item.name)">
-                      
-                    <div ng-switch on="item.status">
-                        <div ng-switch-when="notWatered">Water this flower</div>
-                        <div ng-switch-when="overWatered">This flower is over watered</div>
-                        <div ng-switch-when="driedUp">This flower is dried up! </div>
-                        <div ng-switch-default>No need to water</div>
-                    </div>
-                        </button>
-                    </div>
-
-                    <div>
-                        <button class="delete-button" ng-click="removeButtonHandler(item.name)">
-                       Remove flower
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="form-group">
+    <label for="name">Filter by flower name: </label>
+    <input type="text" id="name" class="form-control" ng-model="flowerName">
 </div>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>
+                <button ng-click="sortBy('name')" type="button" class="btn btn-default">  <p>Name</p></button>
+                <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="sortBy('place')" type="button" class="btn btn-default">  <p>Place</p></button>
+                <span class="sortorder" ng-show="propertyName === 'place'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="sortBy('intervalToWater')" type="button" class="btn btn-default"> <p>Watering interval</p></button>
+                <span class="sortorder" ng-show="propertyName === 'intervalToWater'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="sortBy('lastWateringDate')" type="button" class="btn btn-default">  <p>Last watering date</p></button>
+                <span class="sortorder" ng-show="propertyName === 'lastWateringDate'" ng-class="{reverse: reverse}"></span>
+            </th>
+            <th>
+                <p>Allowed deviation not more than (min)</p>
+            </th>
+            <th>
+                <p>Allowed deviation not less than(min)</p>
+            </th>
+
+            <th>
+                <button ng-click="sortBy('nextWateringDate')" type="button" class="btn btn-default"> <p>Planned next watering date</p></button>
+                <span class="sortorder" ng-show="propertyName === 'nextWateringDate'" ng-class="{reverse: reverse}"></span>
+            </th>
+              <th>
+                <p>Flower state</p>
+            </th>
+            <th>
+                <p>Press button to water a flower</p>
+            </th>
+            <th>
+                <p>Delete flower</p>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="item in flowersArray | filter:{name: flowerName} ">
+            <td ng-repeat="(key, value) in item">
+                        {{value}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="waterButtonHandler(item.name)">
+                      {{item.state}}
+               </button>
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-default" ng-click="removeButtonHandler(item.name)">
+                       Remove flower
+                </button>
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>

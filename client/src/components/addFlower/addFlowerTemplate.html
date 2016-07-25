@@ -1,6 +1,6 @@
 <div class="operation">
-      <p>Add new flower: </p>
-      <button class="add-flower" ng-click="addButtonHandler()">Add</button>
+      <h2>Add new flower: </h2>
+      <button type="button" class="btn btn-default" ng-click="addButtonHandler()">Add</button>
 
       <!--Add flower form-->
       <div ng-hide="hideForm">
@@ -10,6 +10,6 @@
         <p> Watering divergence (not less than) <input type=number name="minDivergence" ng-model="minDivergence" placeholder="Enter watering divergence" required autocomplete="on"> </p>
         <p> Watering divergence (not more than) <input type=number name="maxDivergence" ng-model="maxDivergence" placeholder="Enter watering divergence" required autocomplete="on"> </p>
 
-        <button class="submit-add-flower" ng-click="submitAddButtonHandler()">Submit</button>
+        <button type="button" class="btn btn-default"  ng-click="submitAddButtonHandler()">Submit</button>
       </div>
     </div>

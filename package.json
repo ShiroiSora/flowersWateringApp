@@ -25,8 +25,8 @@
   "scripts": {
     "build": "babel client/src -d client/lib",
     "preserver": "npm run browserify",
-    "start": "budo client/src/app.js:client/lib/boundle.js -p 8080 --live --live-port 8081 --open --watch-glob **/*.{html,css,js} -- -d -t [ babelify --presets [ es2015 react ] ]",
-    "browserify": "browserify client/src/app.js -o   client/lib/boundle.js  -t [ babelify --presets [ es2015 react ] ]",
+    "start": "budo client/src/app.js:client/lib/boundle.js -p 8080 --live --live-port 8081 --open --watch-glob **/*.{html,css,js} -- -d -t [ babelify --comments false ]",
+    "browserify": "browserify client/src/app.js -o   client/lib/boundle.js  -t [ babelify --comments false ]",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

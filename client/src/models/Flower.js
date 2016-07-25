@@ -1,4 +1,4 @@
-export default class Flower {
+export class Flower {
 
     constructor(name, place, intervalToWater, minDivergence, maxDivergence) {
         this.name = name;
