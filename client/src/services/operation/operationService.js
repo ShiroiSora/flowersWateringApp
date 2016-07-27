@@ -4,16 +4,11 @@ import {
 from "../../models/Flower.js";
 
 
-export function operationService(utilService) {
+export function operationService(utilService,localStorageService) {
 
     let operations = {};
 
     const FLOWERS_ARRAY = 'flowersArray';
-
-    operations.saveToStorage = function(flowersArray) {
-        localStorage.setItem(FLOWERS_ARRAY, JSON.stringify(flowersArray));
-    };
-
 
     /*
      * Add new flower
@@ -23,7 +18,7 @@ export function operationService(utilService) {
 
             let flower = new Flower(name, place, intervalToWater, minDivergence, maxDivergence);
             flowersArray.push(flower);
-            operations.saveToStorage(flowersArray, localStorage);
+            localStorageService.saveToStorage(flowersArray, localStorage);
         }
         else {
             alert("Flower with name '" + name + "' already exists!");
@@ -38,7 +33,7 @@ export function operationService(utilService) {
         if (utilService.isFlowerNotExists(flowersArray,name)) {
             operations.waterFlower(flowersArray, name);
 
-            operations.saveToStorage(flowersArray);
+            localStorageService.saveToStorage(flowersArray);
             alert(name + ' was watered!');
         }
         else {
@@ -77,7 +72,7 @@ export function operationService(utilService) {
                 flowersArray.splice(flowersArray.indexOf(item), 1);
             }
         });
-        operations.saveToStorage(flowersArray);
+        localStorageService.saveToStorage(flowersArray);
     }
 
     return operations;

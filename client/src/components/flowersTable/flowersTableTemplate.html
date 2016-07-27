@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="name">Filter by flower name: </label>
+    <label for="name">{{'FILTER_BY_NAME'| translate }} </label>
     <input type="text" id="name" class="form-control" ng-model="flowerName">
 </div>
 
@@ -8,40 +8,48 @@
     <thead>
         <tr>
             <th>
-                <button ng-click="sortBy('name')" type="button" class="btn btn-default">  <p>Name</p></button>
+                <button ng-click="sortBy('name')" type="button" class="btn btn-default">  
+                <p>{{ 'FLOWER_NAME' | translate}}</p></button>
                 <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <button ng-click="sortBy('place')" type="button" class="btn btn-default">  <p>Place</p></button>
+                <button ng-click="sortBy('place')" type="button" class="btn btn-default"> 
+                <p>{{ 'FLOWER_PLACE' | translate}}</p></button>
                 <span class="sortorder" ng-show="propertyName === 'place'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <button ng-click="sortBy('intervalToWater')" type="button" class="btn btn-default"> <p>Watering interval</p></button>
+                <button ng-click="sortBy('intervalToWater')" type="button" class="btn btn-default">
+                     <p>{{ 'WATERING_INTERVAL' | translate}}</p>
+                </button>
                 <span class="sortorder" ng-show="propertyName === 'intervalToWater'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <button ng-click="sortBy('lastWateringDate')" type="button" class="btn btn-default">  <p>Last watering date</p></button>
+                <button ng-click="sortBy('lastWateringDate')" type="button" class="btn btn-default"> 
+                    <p>{{ 'LAST_WATERING_DATE' | translate}}</p>
+                </button>
                 <span class="sortorder" ng-show="propertyName === 'lastWateringDate'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <p>Allowed deviation not more than (min)</p>
+                <p>{{ 'WATERING_DIVERGEANCE_MAX' | translate}}</p>
             </th>
             <th>
-                <p>Allowed deviation not less than(min)</p>
+                <p>{{ 'WATERING_DIVERGEANCE_MIN' | translate}}</p>
             </th>
 
             <th>
-                <button ng-click="sortBy('nextWateringDate')" type="button" class="btn btn-default"> <p>Planned next watering date</p></button>
+                <button ng-click="sortBy('nextWateringDate')" type="button" class="btn btn-default"> 
+                    <p>{{'NEXT_WATERING_DATE' |translate}}</p>
+                </button>
                 <span class="sortorder" ng-show="propertyName === 'nextWateringDate'" ng-class="{reverse: reverse}"></span>
             </th>
-              <th>
-                <p>Flower state</p>
+            <th>
+                <p>{{'FLOWER_STATE' | translate}}</p>
             </th>
             <th>
-                <p>Press button to water a flower</p>
+                <p>{{'WATER_FLOWER_BUTTON_TEXT' | translate}}</p>
             </th>
             <th>
-                <p>Delete flower</p>
+                <p> {{'REMOVE_FLOWER' | translate}}</p>
             </th>
         </tr>
     </thead>
@@ -49,7 +57,7 @@
     <tbody>
         <tr ng-repeat="item in flowersArray | filter:{name: flowerName} ">
             <td ng-repeat="(key, value) in item">
-                        {{value}}
+                {{value}}
             </td>
             <td>
                 <button type="button" class="btn btn-default" ng-click="waterButtonHandler(item.name)">
@@ -59,7 +67,7 @@
 
             <td>
                 <button type="button" class="btn btn-default" ng-click="removeButtonHandler(item.name)">
-                       Remove flower
+                       {{'REMOVE_FLOWER' | translate}}
                 </button>
             </td>
 

@@ -1,21 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="flowersApp">
 
 <head>
   <link rel="stylesheet" type="text/css" href="client/src/styles.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <title>Watering Nanny</title>
+  <title>{{'APPLICATION_TITLE' | translate}}</title>
   <script src="client/lib/boundle.js" charset="utf-8" async></script>
 </head>
 
-
-<body ng-app="flowersApp">
+<body>
   <div class="container" ng-controller="MainAppController">
+
+    <div ng-controller="LanguageController">
+      {{'SWITCH_LANGUAGE' | translate}}
+        <select ng-model="selectedLanguage" ng-change="changeLanguage()" ng-options="x for x in languages">
+        </select>
+    </div>
 
     <add-flower-component></add-flower-component>
 
-
-    <h2>Flowers list</h2>
+    <h2>{{ 'FLOWER_LIST' | translate }}</h2>
     <flowers-table-component></flowers-table-component>
 
   </div>

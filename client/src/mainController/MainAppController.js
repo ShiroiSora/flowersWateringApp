@@ -3,12 +3,12 @@ import {
 }
 from '../models/Flower.js';
 
-export function MainAppController($scope, $interval, utilService) {
+export function MainAppController($scope, $interval, utilService,localStorageService) {
 
     const SECONDS_TO_UPDATE = 30000;
     const FLOWERS_ARRAY = 'flowersArray';
 
-    $scope.flowersArray = getFlowersFromLocalStrorage();
+    $scope.flowersArray = localStorageService.getFlowersFromLocalStrorage();
     $scope.$broadcast('flowersArrayChanged', $scope.flowersArray);
 
 
@@ -21,16 +21,5 @@ export function MainAppController($scope, $interval, utilService) {
         $scope.$broadcast('flowersArrayChanged', $scope.flowersArray);
     }, SECONDS_TO_UPDATE);
 
-    /*
-     * Retrieve flowers array from local storage 
-     */
-    function getFlowersFromLocalStrorage() {
-        let arr = JSON.parse(localStorage.getItem("flowersArray")) || [];
-        let parsedFlowers = [];
-        for (let i = 0; i < arr.length; i++) {
-            parsedFlowers.push(Flower.fromJson(arr[i]));
-        }
-
-        return parsedFlowers;
-    }
+  
 }

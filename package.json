@@ -7,6 +7,7 @@
   "author": "Anna kalinichenko",
   "dependencies": {
     "angular": "^1.5.7",
+    "angular-translate": "^2.11.1",
     "async": "~0.2.8",
     "express": "~3.2.4",
     "socket.io": "~0.9.14"
