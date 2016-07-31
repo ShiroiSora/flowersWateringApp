@@ -1,5 +1,6 @@
 import * as angular from 'angular';
 import * as translate from 'angular-translate';
+import "angular-resource";
 
 import {
     MainAppController
@@ -27,6 +28,17 @@ import {
 from './services/operation/requestService.js';
 
 import {
+    flowerResorce
+}
+from './services/operation/flowerResorce.js';
+
+import {
+    FlowerEntry
+}
+
+from './services/entries/FlowerEntry.js';
+
+import {
     addFlowerComponent
 }
 from "./components/addFlower/addFlowerComponent.js";
@@ -49,16 +61,18 @@ from "./mainController/LanguageController.js";
 let LANGUAGES = ['ru', 'en'];
 
 angular.module('flowersApp', [
-        'pascalprecht.translate'
+        'pascalprecht.translate','ngResource'
     ])
     .factory('utilService', utilService)
     .factory('operationService', operationService)
     .factory('localStorageService', localStorageService)
     .factory('requestService', requestService)
+    .factory('FlowerEntry', FlowerEntry)
+    .factory('flowerResorce', flowerResorce)
     .controller('MainAppController', MainAppController)
     .controller('LanguageController', LanguageController)
     .component('addFlowerComponent', addFlowerComponent)
     .component('flowersTableComponent', flowersTableComponent)
     .constant('LANGUAGES', LANGUAGES)
-    .constant('URL', 'https://js-classes-kucherenko.c9users.io')
+    .constant('URL', 'https://nodejs-soraneko.c9users.io')
     .config(['$translateProvider', translation]);

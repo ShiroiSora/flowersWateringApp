@@ -3,35 +3,36 @@ flowersWateringApp Plant watering scheduler
 Contract between client and server:
 
 1) Application name: 'plantApp'
-2)  id: 'Kalinichenko'
 
 Methods:
 
 1) Add flower (POST): 
-   Url example:  https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower
+   Url example:  https://nodejs-soraneko.c9users.io/plantApp/flower
 
   data: {
-            flower: JSON.stringify(flower)
+            flower: flower
         }
       
 2) Update flower watering date by flower name (PUT)
-   Url example:  https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower
+   Url example:  https://nodejs-soraneko.c9users.io/plantApp/flower
      
- data: {   name: name,
-           date: date
+ data: {    name: name,
+            lastWateringDate: lastWateringDate,
+            nextWateringDate: nextWateringDate,
+            state: state
        }
 
 3) Delete flower by name (DELETE)
-   Url example: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower/${name}
+   Url example: https://nodejs-soraneko.c9users.io/plantApp/flower/${name}
    ${name} - flower name
    
 
-4) Get list of flowers by id
-   Url example: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flowers
+4) Get list of flowers 
+   Url example: https://nodejs-soraneko.c9users.io/plantApp/flowers
 
 
- 5) Get watering history (log) by id
-  Url example:  https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower/history
+ 5) Get watering history (log)
+  Url example:  https://nodejs-soraneko.c9users.io/plantApp/flower/history
 
    
 

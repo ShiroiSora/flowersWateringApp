@@ -1,4 +1,4 @@
-export function addFlowerController( $scope, operationService) {
+export function addFlowerController($scope, operationService, flowerResorce) {
     $scope.hideForm = true;
 
     $scope.addButtonHandler = () => {
@@ -8,10 +8,13 @@ export function addFlowerController( $scope, operationService) {
     $scope.submitAddButtonHandler = () => {
         $scope.hideForm = true;
 
-        operationService.addFlower($scope.flowersArray, localStorage, $scope.name,
+        let flower = operationService.addFlower($scope.flowersArray, localStorage, $scope.name,
             $scope.place, $scope.interval, $scope.minDivergence, $scope.maxDivergence);
-
-        $scope.$emit('flowersArrayChanged', $scope.flowersArray);
+            
+        if (flower !== null) {
+            flowerResorce.addFlower(flower);
+            $scope.$emit('flowersArrayChanged', $scope.flowersArray);
+        }
     }
 
     $scope.$on('flowersArrayChanged', function(event, data) {

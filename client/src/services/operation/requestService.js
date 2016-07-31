@@ -1,14 +1,13 @@
 export function requestService($http, URL) {
 
     const APP_NAME = 'plantApp';
-    const ID = 'Kalinichenko';
-    const URL_WIRH_ID = URL + '/' + APP_NAME + '/Kalinichenko/';
+    const URL_WIRH_ID = URL + '/' + APP_NAME + '/';
 
     let requests = {};
 
     /**
      * Add flower
-     * URL: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower
+     * URL: https://js-classes-kucherenko.c9users.io/plantApp/flower
      **/
     requests.addNewFlower = (flower) => {
         let postUrl = URL_WIRH_ID + 'flower';
@@ -17,7 +16,7 @@ export function requestService($http, URL) {
             method: 'POST',
             url: postUrl,
             data: {
-                flower: JSON.stringify(flower)
+                flower:flower
             }
         }).then(function successCallback(response) {
             console.log("Send new flower to server sucessfully")
@@ -28,7 +27,7 @@ export function requestService($http, URL) {
 
     /**
      * Update flower watering date by flower name
-     * URL: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower
+     * URL: https://js-classes-kucherenko.c9users.io/plantApp/flower
      **/
     requests.waterFlower = (name, date) => {
 
@@ -46,7 +45,7 @@ export function requestService($http, URL) {
 
     /**
      * Delete flower by name
-     * URL: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower/${name}
+     * URL: https://js-classes-kucherenko.c9users.io/plantApp/flower/${name}
      **/
     requests.deleteFlower = (name) => {
 
@@ -61,7 +60,7 @@ export function requestService($http, URL) {
 
     /**
      * Get list of flowers by id
-     * URL: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flowers
+     * URL: https://js-classes-kucherenko.c9users.io/plantApp/flowers
      **/
     requests.getFlowers = () => {
 
@@ -75,7 +74,7 @@ export function requestService($http, URL) {
 
     /**
      * Get watering history (log) by id
-     * URL: https://js-classes-kucherenko.c9users.io/plantApp/Kalinichenko/flower/history
+     * URL: https://js-classes-kucherenko.c9users.io/plantApp/flower/history
      **/
     requests.getWateringHistory = () => {
         let historyUrl = URL_WIRH_ID + 'flower/history';
