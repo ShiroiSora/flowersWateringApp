@@ -4,6 +4,8 @@ export function translation($translateProvider) {
         'APPLICATION_TITLE': 'Watering Nanny',
         'SWITCH_LANGUAGE': 'Switch language: ',
         'FLOWER_LIST': 'Flowers list',
+        'ADD_NEW_FLOWER_LINK': 'Add new flower',
+        'FLOWERS_LIST_LINK': 'Go to flowers',
 
         'ADD_NEW_FLOWER_TEXT': 'Add new flower:',
         'ADD_NEW_FLOWER_BUTTON_TEXT': 'Add',
@@ -32,7 +34,9 @@ export function translation($translateProvider) {
         'APPLICATION_TITLE': 'Система управления поливом цветов',
         'SWITCH_LANGUAGE': 'Поменять язык: ',
         'FLOWER_LIST': 'Список цветов',
-
+        'ADD_NEW_FLOWER_LINK': 'Добавить цветок',
+        'FLOWERS_LIST_LINK': 'Посмотреть список всех цветов',
+        
         'ADD_NEW_FLOWER_TEXT': 'Добавить новый цветок:',
         'ADD_NEW_FLOWER_BUTTON_TEXT': 'Добавить',
 

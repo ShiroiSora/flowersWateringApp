@@ -9,8 +9,11 @@ export function MainAppController($scope, $interval, utilService, localStorageSe
     const FLOWERS_ARRAY = 'flowersArray';
 
     flowerResorce.getFlowers().$promise.then((response) => {
-
-        $scope.flowersArray = response;
+      
+       $scope.flowersArray = response;
+       if(!$scope.flowersArray) {
+           $scope.flowersArray = [];
+       }
         $scope.$broadcast('flowersArrayChanged', $scope.flowersArray);
 
         $interval(function() {

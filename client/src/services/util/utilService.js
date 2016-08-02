@@ -9,11 +9,13 @@ export function utilService() {
      * Check if flower exists in array
      */
     util.isFlowerNotExists = function(flowersArray, name) {
-        for (let i = 0; i < flowersArray.length; i++) {
-            if (flowersArray[i].name === name) {
-                return true;
-            }
-        };
+        if(flowersArray) {
+            for (let i = 0; i < flowersArray.length; i++) {
+                if (flowersArray[i].name === name) {
+                    return true;
+                }
+            };
+        }
         return false;
     }
 

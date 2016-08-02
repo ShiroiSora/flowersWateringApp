@@ -1,23 +1,24 @@
 export function addFlowerController($scope, operationService, flowerResorce) {
-    $scope.hideForm = true;
+    let self = this;
+    self.hideForm = true;
 
-    $scope.addButtonHandler = () => {
-        $scope.hideForm = false;
+    self.addButtonHandler = () => {
+        self.hideForm = false;
     }
 
-    $scope.submitAddButtonHandler = () => {
-        $scope.hideForm = true;
+    self.submitFlower = (flower) => {
+        self.hideForm = true;
 
-        let flower = operationService.addFlower($scope.flowersArray, localStorage, $scope.name,
-            $scope.place, $scope.interval, $scope.minDivergence, $scope.maxDivergence);
-            
-        if (flower !== null) {
-            flowerResorce.addFlower(flower);
-            $scope.$emit('flowersArrayChanged', $scope.flowersArray);
+        let newFlower = operationService.addFlower(self.flowersArray, flower.name,
+            flower.place, flower.interval, flower.minDivergence, flower.maxDivergence);
+ 
+         if (newFlower !== null) {
+            flowerResorce.addFlower(newFlower);
+            $scope.$emit('flowersArrayChanged', self.flowersArray);
         }
     }
 
     $scope.$on('flowersArrayChanged', function(event, data) {
-        $scope.flowersArray = data;
+        self.flowersArray = data;
     });
 }

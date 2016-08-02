@@ -15,12 +15,13 @@
       {{'SWITCH_LANGUAGE' | translate}}
         <select ng-model="selectedLanguage" ng-change="changeLanguage()" ng-options="x for x in languages">
         </select>
-    </div>
 
-    <add-flower-component></add-flower-component>
 
-    <h2>{{ 'FLOWER_LIST' | translate }}</h2>
-    <flowers-table-component></flowers-table-component>
+    <a ui-sref="addFlower"> {{ 'ADD_NEW_FLOWER_LINK' | translate }}</a>
+    <a ui-sref="flowerList">{{ 'FLOWERS_LIST_LINK' | translate }} </a>
+  </div>
+
+  <div ui-view> </div>
 
   </div>
 

@@ -4,18 +4,17 @@ import {
 from "../../models/Flower.js";
 
 
-export function operationService(utilService,  requestService) {
+export function operationService(utilService) {
 
     let operations = {};
 
     /*
      */
-    operations.addFlower = function(flowersArray, localStorage, name, place, intervalToWater, minDivergence, maxDivergence) {
+    operations.addFlower = function(flowersArray, name, place, intervalToWater, minDivergence, maxDivergence) {
         if (!utilService.isFlowerNotExists(flowersArray, name)) {
 
             let flower = new Flower(name, place, intervalToWater, minDivergence, maxDivergence);
             flowersArray.push(flower);
-      //      localStorageService.saveToStorage(flowersArray, localStorage);
             return flower;
         }
         else {
@@ -32,7 +31,6 @@ export function operationService(utilService,  requestService) {
         if (utilService.isFlowerNotExists(flowersArray, name)) {
             let flower = operations.waterFlower(flowersArray, name);
 
-        //    localStorageService.saveToStorage(flowersArray);
             alert(name + ' was watered!');
             return flower;
         }
@@ -76,9 +74,7 @@ export function operationService(utilService,  requestService) {
                 flowersArray.splice(flowersArray.indexOf(item), 1);
             }
         });
-     //   localStorageService.saveToStorage(flowersArray);
     }
 
     return operations;
-
 }

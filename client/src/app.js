@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import * as translate from 'angular-translate';
 import "angular-resource";
+import "angular-ui-router";
 
 import {
     MainAppController
@@ -54,6 +55,11 @@ import {
 from "./i18n/translation.js";
 
 import {
+    routing
+}
+from "./routing/routing.js";
+
+import {
     LanguageController
 }
 from "./mainController/LanguageController.js";
@@ -61,7 +67,7 @@ from "./mainController/LanguageController.js";
 let LANGUAGES = ['ru', 'en'];
 
 angular.module('flowersApp', [
-        'pascalprecht.translate','ngResource'
+        'pascalprecht.translate', 'ngResource', 'ui.router'
     ])
     .factory('utilService', utilService)
     .factory('operationService', operationService)
@@ -69,10 +75,14 @@ angular.module('flowersApp', [
     .factory('requestService', requestService)
     .factory('FlowerEntry', FlowerEntry)
     .factory('flowerResorce', flowerResorce)
+    
     .controller('MainAppController', MainAppController)
     .controller('LanguageController', LanguageController)
     .component('addFlowerComponent', addFlowerComponent)
     .component('flowersTableComponent', flowersTableComponent)
+    
     .constant('LANGUAGES', LANGUAGES)
     .constant('URL', 'https://nodejs-soraneko.c9users.io')
-    .config(['$translateProvider', translation]);
+    
+    .config(['$translateProvider', translation])
+    .config(['$stateProvider', routing]);
