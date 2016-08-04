@@ -8,26 +8,30 @@
     <thead>
         <tr>
             <th>
-                <button ng-click="sortBy('name')" type="button" class="btn btn-default">  
+                <p>{{ 'FLOWER_IMAGE' | translate}}</p>
+                </button>
+            </th>
+            <th>
+                <button ng-click="tableCtrl.sortBy('name')" type="button" class="btn btn-default">  
                 <p>{{ 'FLOWER_NAME' | translate}}</p></button>
-                <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="tableCtrl.propertyName === 'name'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <button ng-click="sortBy('place')" type="button" class="btn btn-default"> 
+                <button ng-click="tableCtrl.sortBy('place')" type="button" class="btn btn-default"> 
                 <p>{{ 'FLOWER_PLACE' | translate}}</p></button>
-                <span class="sortorder" ng-show="propertyName === 'place'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="tableCtrl.propertyName === 'place'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <button ng-click="sortBy('intervalToWater')" type="button" class="btn btn-default">
+                <button ng-click="tableCtrl.sortBy('intervalToWater')" type="button" class="btn btn-default">
                      <p>{{ 'WATERING_INTERVAL' | translate}}</p>
                 </button>
-                <span class="sortorder" ng-show="propertyName === 'intervalToWater'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="tableCtrl.propertyName === 'intervalToWater'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
-                <button ng-click="sortBy('lastWateringDate')" type="button" class="btn btn-default"> 
+                <button ng-click="tableCtrl.sortBy('lastWateringDate')" type="button" class="btn btn-default"> 
                     <p>{{ 'LAST_WATERING_DATE' | translate}}</p>
                 </button>
-                <span class="sortorder" ng-show="propertyName === 'lastWateringDate'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="tableCtrl.propertyName === 'lastWateringDate'" ng-class="{reverse: reverse}"></span>
             </th>
             <th>
                 <p>{{ 'WATERING_DIVERGEANCE_MAX' | translate}}</p>
@@ -37,14 +41,12 @@
             </th>
 
             <th>
-                <button ng-click="sortBy('nextWateringDate')" type="button" class="btn btn-default"> 
+                <button ng-click="tableCtrl.sortBy('nextWateringDate')" type="button" class="btn btn-default"> 
                     <p>{{'NEXT_WATERING_DATE' |translate}}</p>
                 </button>
-                <span class="sortorder" ng-show="propertyName === 'nextWateringDate'" ng-class="{reverse: reverse}"></span>
+                <span class="sortorder" ng-show="tableCtrl.propertyName === 'nextWateringDate'" ng-class="{reverse: reverse}"></span>
             </th>
-            <th>
-                <p>{{'FLOWER_STATE' | translate}}</p>
-            </th>
+
             <th>
                 <p>{{'WATER_FLOWER_BUTTON_TEXT' | translate}}</p>
             </th>
@@ -55,18 +57,52 @@
     </thead>
 
     <tbody>
-        <tr ng-repeat="item in flowersArray | filter:{name: flowerName} ">
-            <td ng-repeat="(key, value) in item">
-                {{value}}
+        <tr ng-repeat="item in tableCtrl.flowersArray | filter:{name: flowerName} ">
+            <td>
+                <img class="flower-image" src="{{item.flowerImg}}" />
             </td>
             <td>
-                <button type="button" class="btn btn-default" ng-click="waterButtonHandler(item.name)">
-                      {{item.state}}
+                {{item.name}}
+            </td>
+            <td>
+                {{item.place}}
+            </td>
+            <td>
+                {{item.intervalToWater}}
+            </td>
+            <td>
+                {{ item.lastWateringDate.getTime() | date:"MM/dd/yyyy 'at' h:mma"}}
+            </td>
+            <td>
+                {{item.minDivergence}}
+            </td>
+            <td>
+                {{item.maxDivergence}}
+            </td>
+            <td>
+                {{ item.nextWateringDate.getTime() | date:"MM/dd/yyyy 'at' h:mma"}}
+            </td>
+            <td>
+               
+                <button type="button" class="btn btn-default" ng-click="tableCtrl.waterButtonHandler(item.name)">
+                    <span ng-if="item.state==='overWatered'" class="overwatered">
+                    Flower is overwatered
+                     </span>
+                      <span ng-if="item.state==='driedUp'">
+                    Flower is dried up!
+                     </span>
+                      <span ng-if="item.state==='notWatered'">
+                    Flower needs to be watered
+                     </span>
+                      <span ng-if="item.state === 'watered'">
+                    Flower is watered       
+                      </span>
                </button>
+            
             </td>
 
             <td>
-                <button type="button" class="btn btn-default" ng-click="removeButtonHandler(item.name)">
+                <button type="button" class="btn btn-default" ng-click="tableCtrl.removeButtonHandler(item.name)">
                        {{'REMOVE_FLOWER' | translate}}
                 </button>
             </td>

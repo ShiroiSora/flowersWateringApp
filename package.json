@@ -7,6 +7,7 @@
   "author": "Anna kalinichenko",
   "dependencies": {
     "angular": "^1.5.7",
+    "angular-animate": "^1.5.8",
     "angular-resource": "^1.5.8",
     "angular-translate": "^2.11.1",
     "angular-ui-router": "^0.3.1",
@@ -18,15 +19,14 @@
     "babel-cli": "^6.10.1",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "budo": "^8.3.0",
-    "react": "^15.2.1",
     "watchify": "^3.7.0"
   },
   "scripts": {
     "build": "babel client/src -d client/lib",
+    "server": "babel-node server.js",
     "preserver": "npm run browserify",
     "start": "budo client/src/app.js:client/lib/boundle.js -p 8080 --live --live-port 8081 --open --watch-glob **/*.{html,css,js} -- -d -t [ babelify --comments false ]",
     "browserify": "browserify client/src/app.js -o   client/lib/boundle.js  -t [ babelify --comments false ]",

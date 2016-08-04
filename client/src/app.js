@@ -2,11 +2,12 @@ import * as angular from 'angular';
 import * as translate from 'angular-translate';
 import "angular-resource";
 import "angular-ui-router";
+import "angular-animate";
 
 import {
     MainAppController
 }
-from "./mainController/MainAppController.js";
+from "./controllers/MainAppController.js";
 
 import {
     utilService
@@ -14,29 +15,23 @@ import {
 from './services/util/utilService.js';
 
 import {
+    FlowersArrayHolder
+}
+from './services/flowersHolder/FlowersArrayHolder.js';
+
+import {
     operationService
 }
 from './services/operation/operationService.js';
 
 import {
-    localStorageService
+    flowerResource
 }
-from './services/localStorage/localStorageService.js';
-
-import {
-    requestService
-}
-from './services/operation/requestService.js';
-
-import {
-    flowerResorce
-}
-from './services/operation/flowerResorce.js';
+from './resources/flowerResource.js';
 
 import {
     FlowerEntry
 }
-
 from './services/entries/FlowerEntry.js';
 
 import {
@@ -50,6 +45,11 @@ import {
 from "./components/flowersTable/flowersTableComponent.js";
 
 import {
+    changeLanguageComponent
+}
+from "./components/changeLanguage/changeLanguageComponent.js";
+
+import {
     translation
 }
 from "./i18n/translation.js";
@@ -59,30 +59,22 @@ import {
 }
 from "./routing/routing.js";
 
-import {
-    LanguageController
-}
-from "./mainController/LanguageController.js";
-
-let LANGUAGES = ['ru', 'en'];
-
 angular.module('flowersApp', [
-        'pascalprecht.translate', 'ngResource', 'ui.router'
+        'pascalprecht.translate', 'ngResource', 'ui.router','ngAnimate'
     ])
     .factory('utilService', utilService)
     .factory('operationService', operationService)
-    .factory('localStorageService', localStorageService)
-    .factory('requestService', requestService)
     .factory('FlowerEntry', FlowerEntry)
-    .factory('flowerResorce', flowerResorce)
-    
+    .factory('flowerResource', flowerResource)
+    .factory('FlowersArrayHolder', FlowersArrayHolder)
+
     .controller('MainAppController', MainAppController)
-    .controller('LanguageController', LanguageController)
     .component('addFlowerComponent', addFlowerComponent)
     .component('flowersTableComponent', flowersTableComponent)
-    
-    .constant('LANGUAGES', LANGUAGES)
-    .constant('URL', 'https://nodejs-soraneko.c9users.io')
-    
+    .component('changeLanguageComponent', changeLanguageComponent)
+
+    .constant('LANGUAGES', ['ru', 'en'])
+    .constant('URL', 'https://ide.c9.io/soraneko/flowerswateringapp')
+
     .config(['$translateProvider', translation])
     .config(['$stateProvider', routing]);

@@ -3,17 +3,23 @@ import {
 }
 from "../../models/Flower.js";
 
-
 export function operationService(utilService) {
 
-    let operations = {};
+    let service = {
+        addFlower: addFlower,
+        water: water,
+        waterFlower: waterFlower,
+        deleteFlower: deleteFlower
+    };
+
+    return service;
 
     /*
      */
-    operations.addFlower = function(flowersArray, name, place, intervalToWater, minDivergence, maxDivergence) {
+    function addFlower(flowersArray, name, place, intervalToWater, minDivergence, maxDivergence, flowerImg) {
         if (!utilService.isFlowerNotExists(flowersArray, name)) {
 
-            let flower = new Flower(name, place, intervalToWater, minDivergence, maxDivergence);
+            let flower = new Flower(name, place, intervalToWater, minDivergence, maxDivergence,flowerImg);
             flowersArray.push(flower);
             return flower;
         }
@@ -27,9 +33,9 @@ export function operationService(utilService) {
     /*
      * Change last watering date
      */
-    operations.water = function(flowersArray, name) {
+    function water(flowersArray, name) {
         if (utilService.isFlowerNotExists(flowersArray, name)) {
-            let flower = operations.waterFlower(flowersArray, name);
+            let flower = waterFlower(flowersArray, name);
 
             alert(name + ' was watered!');
             return flower;
@@ -44,7 +50,7 @@ export function operationService(utilService) {
     /*
      * Update last watering date
      */
-    operations.waterFlower = function(flowersArray, name) {
+    function waterFlower(flowersArray, name) {
         let wateredFlower = {};
         flowersArray.forEach(function(item, i) {
             if (item.name === name) {
@@ -68,7 +74,7 @@ export function operationService(utilService) {
      * Delete flower from array and localstorage
      */
 
-    operations.deleteFlower = function(flowersArray, name) {
+    function deleteFlower(flowersArray, name) {
         flowersArray.forEach(function(item, i) {
             if (item.name === name) {
                 flowersArray.splice(flowersArray.indexOf(item), 1);
@@ -76,5 +82,5 @@ export function operationService(utilService) {
         });
     }
 
-    return operations;
+
 }

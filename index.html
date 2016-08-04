@@ -4,25 +4,26 @@
 <head>
   <link rel="stylesheet" type="text/css" href="client/src/styles.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  
   <title>{{'APPLICATION_TITLE' | translate}}</title>
   <script src="client/lib/boundle.js" charset="utf-8" async></script>
 </head>
 
 <body>
-  <div class="container" ng-controller="MainAppController">
+  <div class="app-container" ng-controller="MainAppController as mainCtrl">
 
-    <div ng-controller="LanguageController">
-      {{'SWITCH_LANGUAGE' | translate}}
-        <select ng-model="selectedLanguage" ng-change="changeLanguage()" ng-options="x for x in languages">
-        </select>
+  <div>
+    <change-language-component></change-language-component>
 
-
-    <a ui-sref="addFlower"> {{ 'ADD_NEW_FLOWER_LINK' | translate }}</a>
-    <a ui-sref="flowerList">{{ 'FLOWERS_LIST_LINK' | translate }} </a>
+ <div class="routes-links">
+  <button>  <a ui-sref="addFlower"> {{ 'ADD_NEW_FLOWER_LINK' | translate }}</a></button>
+  <button>  <a ui-sref="flowerList">{{ 'FLOWERS_LIST_LINK' | translate }} </a></button>
   </div>
-
-  <div ui-view> </div>
-
+  
+</div>
+    <div class="view-container">
+  <div class="view" ui-view> </div>
+    </div>
   </div>
 
 </body>

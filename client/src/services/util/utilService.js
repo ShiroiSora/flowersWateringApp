@@ -1,25 +1,33 @@
 export function utilService() {
 
-    let util = {};
-
     const DRIED_FLOWER_TEXT = 'Flower is dried up!! ';
     const RED_COLOR_BUTTON = 'red';
+
+    let util = {
+        isFlowerNotExists: isFlowerNotExists,
+        getMinutesBetweenDates: getMinutesBetweenDates,
+        isDriedUp: isDriedUp,
+        isOverWatered: isOverWatered,
+        checkFlowerStatuses: checkFlowerStatuses,
+    };
+    return util;
+
 
     /*
      * Check if flower exists in array
      */
-    util.isFlowerNotExists = function(flowersArray, name) {
-        if(flowersArray) {
+    function isFlowerNotExists(flowersArray, name) {
+        if (flowersArray) {
             for (let i = 0; i < flowersArray.length; i++) {
                 if (flowersArray[i].name === name) {
                     return true;
                 }
-            };
+            }
         }
         return false;
     }
 
-    util.getMinutesBetweenDates = function(startDate, endDate) {
+    function getMinutesBetweenDates(startDate, endDate) {
         let difference = startDate.getTime() - endDate.getTime();
         return Math.abs(difference / 60000);
     }
@@ -27,7 +35,7 @@ export function utilService() {
     /*
      * Check if flower is not dried up yet
      */
-    util.isDriedUp = function(item) {
+    function isDriedUp(item) {
         let isLate = false;
 
         if (new Date() > (item.nextWateringDate.getTime() + (item.maxDivergence * 60000))) {
@@ -39,7 +47,7 @@ export function utilService() {
     /*
      * Check if flower is not over watered
      */
-    util.isOverWatered = function(item) {
+    function isOverWatered (item){
         let isOften = false;
         if (util.getMinutesBetweenDates(new Date(), new Date(item.lastWateringDate)) < (item.intervalToWater - item.minDivergence)) {
             isOften = true;
@@ -47,7 +55,7 @@ export function utilService() {
         return isOften;
     }
 
-    util.checkFlowerStatuses = function(flowersArray) {
+    function checkFlowerStatuses(flowersArray) {
         flowersArray.forEach(function(item, i) {
             let resultInMinutes = util.getMinutesBetweenDates(new Date(), new Date(item.lastWateringDate));
 
@@ -59,7 +67,5 @@ export function utilService() {
             }
         });
     }
-
-   return util;
 
 }

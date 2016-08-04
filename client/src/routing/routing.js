@@ -6,7 +6,7 @@ export function routing($stateProvider) {
             templateUrl: './client/src/viewTemplates/addFlowerTemplate.html'
         })
         .state('flowerList', {
-            url: 'flowers',
+            url: '/',
             templateUrl: './client/src/viewTemplates/flowersTemplate.html'
         })
 

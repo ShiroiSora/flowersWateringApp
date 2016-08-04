@@ -1,34 +1,31 @@
-export function flowersTableController($scope, operationService, $filter, flowerResorce) {
+export function flowersTableController(operationService, $filter, flowerResource, FlowersArrayHolder) {
 
-    $scope.waterButtonHandler = (name) => {
-        let flower = operationService.water($scope.flowersArray, name);
-        flowerResorce.waterFlower(flower.name, flower.lastWateringDate, flower.nextWateringDate, flower.state);
+    let self = this;
 
-        $scope.$emit('flowersArrayChanged', $scope.flowersArray);
+    self.propertyName = 'name';
+    self.reverse = true;
+    self.sortBy = sort;
+
+    self.flowersArray = $filter('orderBy')(FlowersArrayHolder.getFlowersArray(), self.propertyName, self.reverse);
+
+    self.waterButtonHandler = water;
+    self.removeButtonHandler = remove;
+
+    function water(name) {
+        let flower = operationService.water( self.flowersArray, name);
+        flowerResource.waterFlower(flower.name, flower.lastWateringDate, flower.nextWateringDate, flower.state);
     }
 
-    $scope.removeButtonHandler = (name) => {
-        operationService.deleteFlower($scope.flowersArray, name);
-        flowerResorce.deleteFlower(name);
-
-        $scope.$emit('flowersArrayChanged', $scope.flowersArray);
+    function remove(name) {
+        operationService.deleteFlower( self.flowersArray, name);
+        flowerResource.deleteFlower(name);
     }
 
-
-    $scope.propertyName = 'name';
-    $scope.reverse = true;
-    $scope.flowersArray = $filter('orderBy')($scope.flowersArray, $scope.propertyName, $scope.reverse);
-
-    $scope.sortBy = function(propertyName) {
-        $scope.reverse = (propertyName !== null && $scope.propertyName === propertyName) ?
-            !$scope.reverse : false;
-        $scope.propertyName = propertyName;
-        $scope.flowersArray = $filter('orderBy')($scope.flowersArray, $scope.propertyName, $scope.reverse);
+    function sort(propertyName) {
+        self.reverse = (propertyName !== null && self.propertyName === propertyName) ?
+            !self.reverse : false;
+        self.propertyName = propertyName;
+        self.flowersArray = $filter('orderBy')(self.flowersArray, self.propertyName, self.reverse);
     };
-
-
-    $scope.$on('flowersArrayChanged', function(event, data) {
-        $scope.flowersArray = data;
-    });
 
 }

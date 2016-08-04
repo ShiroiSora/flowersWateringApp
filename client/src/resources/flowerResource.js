@@ -1,8 +1,15 @@
-export function flowerResorce(FlowerEntry, URL) {
+export function flowerResource(FlowerEntry, URL) {
 
-    let flowerRes = {};
+    let service = {
+        addFlower: addFlower,
+        waterFlower: waterFlower,
+        getFlowers: getFlowers,
+        deleteFlower: deleteFlower
+    };
+    return service;
 
-    flowerRes.addFlower = (flower) => {
+
+    function addFlower(flower) {
         let entry = new FlowerEntry();
 
         entry.name = flower.name;
@@ -17,7 +24,7 @@ export function flowerResorce(FlowerEntry, URL) {
         entry.$save();
     }
 
-    flowerRes.waterFlower = (name, lastWateringDate, nextWateringDate, state) => {
+    function waterFlower(name, lastWateringDate, nextWateringDate, state) {
         FlowerEntry.update({
             name: name,
             lastWateringDate: lastWateringDate,
@@ -26,16 +33,15 @@ export function flowerResorce(FlowerEntry, URL) {
         });
     }
 
-    flowerRes.getFlowers = () => {
+    function getFlowers() {
         return FlowerEntry.query();
     }
 
 
-    flowerRes.deleteFlower = (name) => {
+    function deleteFlower(name) {
         return FlowerEntry.delete({
             name: name
         });
     }
 
-    return flowerRes;
 }

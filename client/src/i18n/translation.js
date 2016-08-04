@@ -12,9 +12,10 @@ export function translation($translateProvider) {
         'ADD_FLOWER_NAME': 'Name:',
         'ADD_FLOWER_PLACE': 'Place, were plant is situated:',
         'ADD_FLOWER_WATERING_INTERVAL': 'Watering interval: ',
-        'ADD_FLOWER_WATERING_DIVERGEANCE_MIN': 'Watering divergence (not less than)',
-        'ADD_FLOWER_WATERING_DIVERGEANCE_MAX': 'Watering divergence (not more than) ',
-        'ADD_FLOWER_SUBMIT': 'Submit: ',
+        'ADD_FLOWER_WATERING_DIVERGEANCE_MIN': 'Watering divergence (not less than):',
+        'ADD_FLOWER_WATERING_DIVERGEANCE_MAX': 'Watering divergence (not more than):',
+        'ADD_FLOWER_IMAGE': 'Add link to flower image:',
+        'ADD_FLOWER_SUBMIT': 'Submit',
 
 
         'FILTER_BY_NAME': 'Filter by flower name:',
@@ -27,7 +28,8 @@ export function translation($translateProvider) {
         'LAST_WATERING_DATE': 'Last watering date',
         'WATERING_INTERVAL': 'Watering interval',
         'FLOWER_PLACE': 'Place',
-        'FLOWER_NAME': 'Name'
+        'FLOWER_NAME': 'Name',
+        'FLOWER_IMAGE' : 'Flower photo'
     });
 
     $translateProvider.translations('ru', {
@@ -43,12 +45,13 @@ export function translation($translateProvider) {
         'ADD_FLOWER_NAME': 'Имя:',
         'ADD_FLOWER_PLACE': 'Введите место, где расположено растение:',
         'ADD_FLOWER_WATERING_INTERVAL': 'Интервал полива (мин): ',
-        'ADD_FLOWER_WATERING_DIVERGEANCE_MIN': 'Можно полить раньше, чем след. дата полива за (мин)',
-        'ADD_FLOWER_WATERING_DIVERGEANCE_MAX': 'Засохнет, если его не полить в течение х мин после назначеной даты полива',
-        'ADD_FLOWER_SUBMIT': 'Submit: ',
+        'ADD_FLOWER_WATERING_DIVERGEANCE_MIN': 'Можно полить раньше, чем след. дата полива за (мин):',
+        'ADD_FLOWER_WATERING_DIVERGEANCE_MAX': 'Засохнет, если его не полить в течение х мин после назначеной даты полива:',
+        'ADD_FLOWER_IMAGE': 'Ссылка на фото цветка:',
+        'ADD_FLOWER_SUBMIT': 'Добавить ',
 
 
-        'FILTER_BY_NAME': 'Отфильтровать по имени:',
+        'FILTER_BY_NAME': 'Отфильтровать по имени',
         'REMOVE_FLOWER': 'Удалить цветок',
         'WATER_FLOWER_BUTTON_TEXT': 'Нажмите, чтобы полить',
         'FLOWER_STATE': 'Состояние цветка',
@@ -58,7 +61,9 @@ export function translation($translateProvider) {
         'LAST_WATERING_DATE': 'Дата последнего полива',
         'WATERING_INTERVAL': 'Интервал полива (мин):',
         'FLOWER_PLACE': 'Где расположен цветок',
-        'FLOWER_NAME': 'Имя'
+        'FLOWER_NAME': 'Имя',
+        'FLOWER_IMAGE' : 'Фото цветка'
+        
     });
 
     $translateProvider.preferredLanguage('ru');

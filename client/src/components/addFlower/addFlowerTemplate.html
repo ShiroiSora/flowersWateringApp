@@ -1,23 +1,31 @@
 <div class="operation">
   <h2>{{ 'ADD_NEW_FLOWER_TEXT' | translate }} </h2>
-  <button type="button" class="btn btn-default" ng-click="$ctrl.addButtonHandler()">
+  <button type="button" class="btn btn-default" ng-click="addCtrl.addButtonHandler()">
         {{ 'ADD_NEW_FLOWER_BUTTON_TEXT' | translate }}
   </button>
 
   <!--Add flower form-->
-  <form ng-hide="$ctrl.hideForm" ng-submit="$ctrl.submitFlower(flower)" name="addFlowerForm">
+  <form ng-hide="addCtrl.hideForm" ng-submit="addCtrl.submitFlower(flower)" name="addFlowerForm">
+    
     <p> {{ 'ADD_FLOWER_NAME' | translate }}
     <input type=text name="name" placeholder="Enter flower name" ng-model="flower.name" ng-required ng-minlength="2" ng-maxlength="25">
     <span ng-show="addFlowerForm.name.$error.required">Please, fill flower name</span>
     </p>
+    
     <p> {{ 'ADD_FLOWER_PLACE' | translate }}
     <input type=text name="place" ng-model="flower.place" ng-required autocomplete="on"  ng-minlength="3" ng-maxlength="30"> </p>
+    
     <p> {{ 'ADD_FLOWER_WATERING_INTERVAL' | translate }}
-    <input type=number name="interval" ng-model="flower.interval"  ng-required autocomplete="on" ng-min="1"> </p>
+    <input type=number name="interval" ng-model="flower.interval" ng-required autocomplete="on" ng-min="1"> </p>
+    
     <p> {{ 'ADD_FLOWER_WATERING_DIVERGEANCE_MIN' | translate }} 
     <input type=number name="minDivergence" ng-model="flower.minDivergence" ng-required autocomplete="on" ng-min="1"> </p>
+    
     <p> {{ 'ADD_FLOWER_WATERING_DIVERGEANCE_MAX' | translate }}
-    <input type=number name="maxDivergence" ng-model="flower.maxDivergence"ng-required autocomplete="on" ng-min="1"> </p>
+    <input type=number name="maxDivergence" ng-model="flower.maxDivergence" ng-required autocomplete="on" ng-min="1"> </p>
+    
+     <p> {{ 'ADD_FLOWER_IMAGE' | translate }}
+     <input type=text name="flowerImg" ng-model="flower.flowerImg" ng-required> </p>
 
    <input type="submit" value=" {{ 'ADD_FLOWER_SUBMIT' | translate }}" />
   </form>
