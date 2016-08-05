@@ -20,7 +20,6 @@ export function FlowersArrayHolder() {
     }
 
     function parseResponse(response) {
-        response = JSON.parse(response); //TODO delete
         for (let i = 0; i < response.length; i++) {
             array.push(Flower.fromJson(response[i]));
         }

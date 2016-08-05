@@ -74,7 +74,7 @@ angular.module('flowersApp', [
     .component('changeLanguageComponent', changeLanguageComponent)
 
     .constant('LANGUAGES', ['ru', 'en'])
-    .constant('URL', 'https://ide.c9.io/soraneko/flowerswateringapp')
+    .constant('URL', 'http://localhost:8080')
 
     .config(['$translateProvider', translation])
     .config(['$stateProvider', routing]);

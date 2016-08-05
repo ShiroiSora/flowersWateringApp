@@ -12,18 +12,18 @@
 <body>
   <div class="app-container" ng-controller="MainAppController as mainCtrl">
 
-  <div>
-    <change-language-component></change-language-component>
+     <div>
+        <change-language-component></change-language-component>
 
- <div class="routes-links">
-  <button>  <a ui-sref="addFlower"> {{ 'ADD_NEW_FLOWER_LINK' | translate }}</a></button>
-  <button>  <a ui-sref="flowerList">{{ 'FLOWERS_LIST_LINK' | translate }} </a></button>
-  </div>
-  
-</div>
-    <div class="view-container">
-  <div class="view" ui-view> </div>
-    </div>
+     <div class="routes-links">
+      <button>  <a ui-sref="addFlower"> {{ 'ADD_NEW_FLOWER_LINK' | translate }}</a></button>
+      <button>  <a ui-sref="flowerList">{{ 'FLOWERS_LIST_LINK' | translate }} </a></button>
+      </div>
+
+     </div>
+        <div class="view-container">
+              <div class="view" ui-view> </div>
+        </div>
   </div>
 
 </body>
